@@ -1,5 +1,5 @@
 #Brawser name
-#Tue Mar 12 15:57:30 EET 2019
-FF=FireFox
-CH=Chrome
-IE=IE
+#Tue Mar 12 16:16:19 EET 2019
+ driver=Chrome
+ driver2=FireFox
+ driver3=IE

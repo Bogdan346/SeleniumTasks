@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -16,16 +17,13 @@ public class WebDriveSetting {
     public void initChrome() throws IOException {
         System.setProperty("webdriver.chrome.driver", "src\\main\\resources\\drivers/chromedriver.exe");
         System.setProperty("webdriver.ie.driver", "src\\main\\resources\\drivers/IEDriverServer.exe");
+        System.setProperty("webdriver.gecko.driver", "src\\main\\resources\\drivers/geckodriver.exe");
 
 
         Properties properties = new Properties();
-        properties.setProperty("CH", "Chrome");
-        properties.setProperty("FF", "FireFox");
-        properties.setProperty("IE", "IE");
-        FileOutputStream out = new FileOutputStream("browserFile");
-        properties.store(out, "Brawser name");
-
-        String browser = properties.getProperty("CH", "Default Value"); // Выбор браузера
+        FileInputStream in =  new FileInputStream("browserFile");
+        properties.load(in);
+        String browser = properties.getProperty("driver1"); // Выбор браузера
 
         if ("Chrome".equals(browser)) {
             driver = new ChromeDriver();
